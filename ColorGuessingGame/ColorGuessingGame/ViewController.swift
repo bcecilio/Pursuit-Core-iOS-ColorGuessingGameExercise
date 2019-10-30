@@ -11,59 +11,98 @@ import UIKit
 class ViewController: UIViewController {
     
     @IBOutlet weak var displayColor: UIView!
-    @IBOutlet weak var ColorButtonRed: UIButton!
+    @IBOutlet weak var colorButtonRed: UIButton!
     @IBOutlet weak var colorButtonGreen: UIButton!
     @IBOutlet weak var colorButtonBlue: UIButton!
     @IBOutlet weak var playAgainIfLose: UIButton!
     @IBOutlet weak var displayLabel: UILabel!
+    @IBOutlet weak var score: UILabel!
+    @IBOutlet weak var highScore: UILabel!
     
-    var score = 0
-    var highScore = 0
-    var hue: CGFloat = 0
-    var saturation: CGFloat = 0
-    var brightness: CGFloat = 0
+    
+    var currentScore = 0
+    var finalScore = 0
+    var randomRed: CGFloat = 0.0
+    var randomGreen: CGFloat = 0.0
+    var randomBlue: CGFloat = 0.0
+    var emptyColorArr = [CGFloat]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        displayColor.backgroundColor = generateRandomColor()
+        generateRandomColor()
         // Do any additional setup after loading the view.
         
     }
     
     // true random color function
-    func generateRandomColor() -> UIColor {
-        hue = CGFloat.random(in: 0...1) / 256 // use 256 to get full range from 0.0 to 1.0
-        saturation = CGFloat.random(in: 0.5...1) / 256 + 0.5 // from 0.5 to 1.0 to stay away from white
-        brightness = CGFloat.random(in: 0.5...1) / 256 + 0.5 // from 0.5 to 1.0 to stay away from black
+    func generateRandomColor() {
+        randomRed = CGFloat.random(in: 0...1)
+        randomGreen = CGFloat.random(in: 0...1)
+        randomBlue = CGFloat.random(in: 0...1)
         
-        let randomColor = [hue, saturation, brightness]
-        let randomUIColor = randomColor.max
+        let randomColor = UIColor(red: randomRed, green: randomGreen, blue: randomBlue, alpha: 1) //3 properties
         
-        return UIColor(hue: hue, saturation: saturation, brightness: brightness, alpha: 1)
+        displayColor.backgroundColor = randomColor
+        
+        emptyColorArr.append(randomRed)
+        emptyColorArr.append(randomGreen)
+        emptyColorArr.append(randomBlue)
+        
     }
+    
     
     @IBAction func playAgain(_ sender: UIButton) {
         displayLabel.text = "Guess the color in the mixed color above!"
-        displayColor.backgroundColor = generateRandomColor()
+        colorButtonBlue.isEnabled = true
+        colorButtonRed.isEnabled = true
+        colorButtonGreen.isEnabled = true
     }
+    
+    
     
     
     // TODO: put hue, saturation, and brightness in an array and return greatest value and compare that value in if statement.
-    // use greater than or less than operators
     
     @IBAction func colorButton(_ sender: UIButton) {
-        if sender.backgroundColor != generateRandomColor(){
-            displayLabel.text = "Wrong! Your score is \(score) Do you want to play again?"
-//            ColorButtonRed.isEnabled = false
-//            colorButtonGreen.isEnabled = false
-//            colorButtonBlue.isEnabled = false
-        } else if sender.backgroundColor == generateRandomColor() {
-            score += 1
-            displayLabel.text = "Correct! Keep Going! Your score is \(score)"
-            displayColor.backgroundColor = generateRandomColor()
+        switch sender.tag {
+        case 0:
+            if emptyColorArr[0] == emptyColorArr.max() ?? 0.1{
+                displayLabel.text = "gj"
+                currentScore += 1
+                score.text = "Score: \(currentScore)"
+                generateRandomColor()
+            } else {
+                displayLabel.text = "bad boi"
+                colorButtonBlue.isEnabled = false
+                colorButtonRed.isEnabled = false
+                colorButtonGreen.isEnabled = false
+            }
+        case 1:
+            if emptyColorArr[1] == emptyColorArr.max() ?? 0.1{
+                displayLabel.text = "gj"
+                currentScore += 1
+                score.text = "Score: \(currentScore)"
+                generateRandomColor()
+            } else {
+                displayLabel.text = "bad boi"
+                colorButtonBlue.isEnabled = false
+                colorButtonRed.isEnabled = false
+                colorButtonGreen.isEnabled = false
+            }
+        case 2:
+            if emptyColorArr[2] == emptyColorArr.max() ?? 0.1 {
+                displayLabel.text = "gj"
+                currentScore += 1
+                score.text = "Score: \(currentScore)"
+                generateRandomColor()
+            } else {
+                displayLabel.text = "bad boi"
+                colorButtonBlue.isEnabled = false
+                colorButtonRed.isEnabled = false
+                colorButtonGreen.isEnabled = false
+            }
+        default:
+            displayLabel.text = "bad boi"
         }
     }
-    
-    
 }
-

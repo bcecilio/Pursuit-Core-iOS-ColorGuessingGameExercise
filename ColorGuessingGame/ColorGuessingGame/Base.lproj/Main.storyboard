@@ -42,6 +42,9 @@
                                 <rect key="frame" x="309" y="480" width="86" height="86"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal">
+                                    <color key="titleColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="colorButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="XIc-Gh-FNz"/>
                                 </connections>
@@ -78,12 +81,14 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="ColorButtonRed" destination="GbR-z5-ATy" id="ikb-94-pbj"/>
                         <outlet property="colorButtonBlue" destination="8kn-Io-mJE" id="XFZ-dJ-laB"/>
                         <outlet property="colorButtonGreen" destination="6HG-KX-xjS" id="dhY-8A-09l"/>
+                        <outlet property="colorButtonRed" destination="GbR-z5-ATy" id="ikb-94-pbj"/>
                         <outlet property="displayColor" destination="K0w-Zn-gsX" id="E24-ka-y1X"/>
                         <outlet property="displayLabel" destination="IYL-Vv-9Hc" id="Iga-DH-cy2"/>
+                        <outlet property="highScore" destination="Dye-o0-DMm" id="JAY-Pi-oJL"/>
                         <outlet property="playAgainIfLose" destination="ezJ-DK-ird" id="a3A-3p-RvM"/>
+                        <outlet property="score" destination="wC5-G0-bdY" id="Vda-La-8fI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
