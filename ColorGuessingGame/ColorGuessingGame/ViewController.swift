@@ -17,6 +17,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var playAgainIfLose: UIButton!
     @IBOutlet weak var displayLabel: UILabel!
     
+    var score = 0
+    var highScore = 0
     var hue: CGFloat = 0
     var saturation: CGFloat = 0
     var brightness: CGFloat = 0
@@ -37,12 +39,25 @@ class ViewController: UIViewController {
       return UIColor(hue: hue, saturation: saturation, brightness: brightness, alpha: 1)
     }
     
+    @IBAction func playAgain(_ sender: UIButton) {
+        displayLabel.text = "Guess the color in the mixed color above!"
+        displayColor.backgroundColor = generateRandomColor()
+    }
+    
+    
+    // TODO: put hue, saturation, and brightness in an array and return greatest value and compare that value in if statement.
+    // use greater than or less than operators
     
     @IBAction func colorButton(_ sender: UIButton) {
         if sender.backgroundColor != generateRandomColor(){
-            displayLabel.text = "Wrong! Do you want to play again?"
+            displayLabel.text = "Wrong! Your score is \(score) Do you want to play again?"
+            ColorButtonRed.isEnabled = false
+            colorButtonGreen.isEnabled = false
+            colorButtonBlue.isEnabled = false
         } else if sender.backgroundColor == generateRandomColor() {
-            displayLabel.text = "Correct! Keep Going!"
+            score += 1
+            displayLabel.text = "Correct! Keep Going! Your score is \(score)"
+            displayColor.backgroundColor = generateRandomColor()
         }
     }
     
