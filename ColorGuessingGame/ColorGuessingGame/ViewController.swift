@@ -53,6 +53,11 @@ class ViewController: UIViewController {
     
     @IBAction func playAgain(_ sender: UIButton) {
         displayLabel.text = "Guess the color in the mixed color above!"
+        emptyColorArr = []
+        generateRandomColor()
+        currentScore = 0
+        score.text = "Score: \(currentScore)"
+        highScore.text = "HighScore: \(currentScore)"
         colorButtonBlue.isEnabled = true
         colorButtonRed.isEnabled = true
         colorButtonGreen.isEnabled = true
@@ -67,36 +72,45 @@ class ViewController: UIViewController {
         switch sender.tag {
         case 0:
             if emptyColorArr[0] == emptyColorArr.max() ?? 0.1{
-                displayLabel.text = "gj"
+                displayLabel.text = "Correct! Keep Going!"
                 currentScore += 1
                 score.text = "Score: \(currentScore)"
+                emptyColorArr = []
                 generateRandomColor()
             } else {
-                displayLabel.text = "bad boi"
+                displayLabel.text = "Wrong. Do you want to play again?"
+                finalScore = currentScore
+                highScore.text = "HighScore: \(currentScore)"
                 colorButtonBlue.isEnabled = false
                 colorButtonRed.isEnabled = false
                 colorButtonGreen.isEnabled = false
             }
         case 1:
             if emptyColorArr[1] == emptyColorArr.max() ?? 0.1{
-                displayLabel.text = "gj"
+                displayLabel.text = "Correct! Keep Going!"
                 currentScore += 1
                 score.text = "Score: \(currentScore)"
+                emptyColorArr = []
                 generateRandomColor()
             } else {
-                displayLabel.text = "bad boi"
+                displayLabel.text = "Wrong. Do you want to play again?"
+                finalScore = currentScore
+                highScore.text = "HighScore: \(currentScore)"
                 colorButtonBlue.isEnabled = false
                 colorButtonRed.isEnabled = false
                 colorButtonGreen.isEnabled = false
             }
         case 2:
             if emptyColorArr[2] == emptyColorArr.max() ?? 0.1 {
-                displayLabel.text = "gj"
+                displayLabel.text = "Correct! Keep Going!"
                 currentScore += 1
                 score.text = "Score: \(currentScore)"
+                emptyColorArr = []
                 generateRandomColor()
             } else {
-                displayLabel.text = "bad boi"
+                displayLabel.text = "Wrong. Do you want to play again?"
+                finalScore = currentScore
+                highScore.text = "HighScore: \(currentScore)"
                 colorButtonBlue.isEnabled = false
                 colorButtonRed.isEnabled = false
                 colorButtonGreen.isEnabled = false
