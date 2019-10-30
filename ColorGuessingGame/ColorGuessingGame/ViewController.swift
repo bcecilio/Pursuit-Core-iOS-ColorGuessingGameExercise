@@ -36,7 +36,10 @@ class ViewController: UIViewController {
         saturation = CGFloat.random(in: 0.5...1) / 256 + 0.5 // from 0.5 to 1.0 to stay away from white
         brightness = CGFloat.random(in: 0.5...1) / 256 + 0.5 // from 0.5 to 1.0 to stay away from black
         
-      return UIColor(hue: hue, saturation: saturation, brightness: brightness, alpha: 1)
+        let randomColor = [hue, saturation, brightness]
+        let randomUIColor = randomColor.max
+        
+        return UIColor(hue: hue, saturation: saturation, brightness: brightness, alpha: 1)
     }
     
     @IBAction func playAgain(_ sender: UIButton) {
@@ -51,9 +54,9 @@ class ViewController: UIViewController {
     @IBAction func colorButton(_ sender: UIButton) {
         if sender.backgroundColor != generateRandomColor(){
             displayLabel.text = "Wrong! Your score is \(score) Do you want to play again?"
-            ColorButtonRed.isEnabled = false
-            colorButtonGreen.isEnabled = false
-            colorButtonBlue.isEnabled = false
+//            ColorButtonRed.isEnabled = false
+//            colorButtonGreen.isEnabled = false
+//            colorButtonBlue.isEnabled = false
         } else if sender.backgroundColor == generateRandomColor() {
             score += 1
             displayLabel.text = "Correct! Keep Going! Your score is \(score)"
