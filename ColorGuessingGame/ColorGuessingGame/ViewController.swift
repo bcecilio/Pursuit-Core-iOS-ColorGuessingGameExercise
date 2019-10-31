@@ -57,7 +57,7 @@ class ViewController: UIViewController {
         generateRandomColor()
         currentScore = 0
         score.text = "Score: \(currentScore)"
-        highScore.text = "HighScore: \(currentScore)"
+        highScore.text = "HighScore: \(finalScore)"
         colorButtonBlue.isEnabled = true
         colorButtonRed.isEnabled = true
         colorButtonGreen.isEnabled = true
